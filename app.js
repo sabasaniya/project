@@ -1,25 +1,25 @@
+
 const express = require('express');
-const app=express();
+const app = express();
 
-const readline = require('readline');
+// Define a route to check even or odd
+app.get('/', (req, res) => {
+    // Get the number from the query parameter
+    const number = parseInt(req.query.number);
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-rl.question('Enter a number: ', (number) => {
-  if (isNaN(number)) {
-    console.log('Please enter a valid number.');
-  } else {
-    if (number % 2 === 0) {
-      console.log("${number} is even.");
-    } else {
-      console.log("${number} is odd.");
+    // Validate if a number is provided and is valid
+    if (isNaN(number)) {
+        return res.status(400).send("Please provide a valid number as a query parameter, e.g., /evenodd?number=10");
     }
-  }
-  rl.close();
+
+    // Check if the number is even or odd
+    const result = (number % 2 === 0) ? "even" : "odd";
+
+    // Respond with the result
+    res.send(The number ${number} is ${result}.);
 });
+
+// Start the server
 app.listen(3020, () => {
     console.log("Server is running on port 3020");
 });
