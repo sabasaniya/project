@@ -1,35 +1,25 @@
 const express = require('express');
-// Import readline module for user input
-const readline = require('readline');
 const app=express();
 
-// Create an interface for input and output
+const readline = require('readline');
+
 const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
+  input: process.stdin,
+  output: process.stdout
 });
 
-// Ask the user for a number
-rl.question('Enter a number: ', (input) => {
-    // Convert the input to a number
-    const number = parseInt(input);
-
-    // Check if the input is a valid number
-    if (isNaN(number)) {
-        console.log('Please enter a valid number.');
+rl.question('Enter a number: ', (number) => {
+  if (isNaN(number)) {
+    console.log('Please enter a valid number.');
+  } else {
+    if (number % 2 === 0) {
+      console.log(${number} is even.);
     } else {
-        // Check if the number is even or odd
-        if (number % 2 === 0) {
-            console.log("${number} is an even number.");
-        } else {
-            console.log("${number} is an odd number.");
-        }
+      console.log(${number} is odd.);
     }
-
-    // Close the readline interface
-    rl.close();
+  }
+  rl.close();
 });
-// Start the server
 app.listen(3020, () => {
     console.log("Server is running on port 3020");
 });
