@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
     const result = (number % 2 === 0) ? "even" : "odd";
 
     // Respond with the result
-    res.send("The number ${number} is ${result}");
+    res.send('The number ${number} is ${result}');
 });
 
 // Start the server
