@@ -9,7 +9,7 @@ app.get('/evenodd', (req, res) => {
     // Validate if a number is provided and is valid
     if (isNaN(number)) {
         return res.status(400).send("Please provide a valid number as a query parameter, e.g., /evenodd?number=10");
-    }
+    });
 
     // Check if the number is even or odd
     const result = (number % 2 === 0) ? "even" : "odd";
